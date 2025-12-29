@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bathyoon Store | باثيون ستور</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">B</span>
+      <div>
+        <strong>Bathyoon Store</strong>
+        <small data-i18n="tagline">Digital gaming marketplace</small>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="control">
+        <label for="language" data-i18n="language">اللغة</label>
+        <select id="language">
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="currency" data-i18n="currency">العملة</label>
+        <select id="currency">
+          <option value="SAR">SAR ﷼</option>
+          <option value="USD">USD $</option>
+        </select>
+      </div>
+      <a class="cta" href="#catalog" data-i18n="shopNow">تسوق الآن</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__text">
+        <p class="eyebrow" data-i18n="eyebrow">BathYoon.com — متجر موثوق للمنتجات الرقمية</p>
+        <h1 data-i18n="headline">حسابات وأكواد الألعاب الرقمية بأسعار عادلة وخدمة فورية</h1>
+        <p class="lead" data-i18n="lead">
+          نوفر حسابات Call of Duty وBlack Ops 7 وRocket League ومنتجات Forza Horizon 5 مع توصيل فوري، دعم سريع، وضمان استرجاع خلال 24 ساعة.
+        </p>
+        <div class="hero__actions">
+          <a href="#catalog" class="primary" data-i18n="browse">استكشف المتجر</a>
+          <a href="#support" class="secondary" data-i18n="support">تواصل مع الدعم</a>
+        </div>
+        <ul class="badges">
+          <li data-i18n="badgeTrusted">دفع آمن وسريع</li>
+          <li data-i18n="badgeInstant">تسليم مباشر على بريدك أو المنصة</li>
+          <li data-i18n="badgeCurrency">يدعم الريال السعودي والدولار الأمريكي</li>
+        </ul>
+      </div>
+      <div class="hero__card">
+        <div class="hero__card__header">
+          <span class="pill" data-i18n="featured">عرض مميز</span>
+          <h2 data-i18n="featuredTitle">حزمة إطلاق Black Ops 7</h2>
+          <p data-i18n="featuredDesc">حساب جاهز مع إضافات حصرية وتفعيل فوري.</p>
+        </div>
+        <div class="price" data-price="289" data-i18n-price>
+          <span class="amount">289</span>
+          <span class="currency">﷼</span>
+        </div>
+        <ul class="hero__card__list">
+          <li data-i18n="feature1">ضمان استرجاع لمدة 24 ساعة</li>
+          <li data-i18n="feature2">دعم فني بالعربي والإنجليزي</li>
+          <li data-i18n="feature3">تفعيل فوري عبر البريد</li>
+        </ul>
+        <button class="primary full" data-i18n="ctaHero">أضف للسلة</button>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="aboutEyebrow">لماذا باثيون؟</p>
+        <h2 data-i18n="aboutTitle">المتجر المتخصص في المنتجات الرقمية</h2>
+        <p class="section__lead" data-i18n="aboutText">
+          باثيون ستور متجر سعودي متخصص في بيع الحسابات والأكواد الرقمية للألعاب الرائجة. نركز على تجربة شراء سهلة، دعم مباشر، وسياسات واضحة لحماية اللاعبين.
+        </p>
+      </div>
+      <div class="grid features">
+        <article class="card">
+          <h3 data-i18n="featureCard1Title">منتجات أصلية ومضمونة</h3>
+          <p data-i18n="featureCard1Text">جميع الأكواد والحسابات يتم اختبارها وتوثيقها قبل التسليم.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="featureCard2Title">تحويل عملات مرن</h3>
+          <p data-i18n="featureCard2Text">ادفع بالريال السعودي أو الدولار الأمريكي مع تحديث السعر تلقائياً.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="featureCard3Title">تسليم فوري</h3>
+          <p data-i18n="featureCard3Text">يصل الرمز أو بيانات الحساب للبريد أو المنصة خلال دقائق.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="catalog" class="section">
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="catalogEyebrow">تصفح حسب الفئة</p>
+        <h2 data-i18n="catalogTitle">ألعاب وحسابات جاهزة</h2>
+      </div>
+      <div id="product-list" class="grid products"></div>
+    </section>
+
+    <section id="support" class="section section--highlight">
+      <div class="support">
+        <div>
+          <p class="eyebrow" data-i18n="supportEyebrow">خدمة العملاء</p>
+          <h2 data-i18n="supportTitle">دعم سريع 24/7</h2>
+          <p data-i18n="supportText">نساعدك في التفعيل، الدفع، واسترجاع المنتجات في حال وجود مشكلة خلال 24 ساعة.</p>
+          <div class="support__actions">
+            <a class="primary" href="mailto:support@bathyoon.com" data-i18n="supportEmail">support@bathyoon.com</a>
+            <a class="secondary" href="https://wa.me/966000000000" target="_blank" rel="noreferrer" data-i18n="supportChat">دردشة واتساب</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3 data-i18n="policiesTitle">سياسة واضحة</h3>
+          <ul class="list">
+            <li data-i18n="policy1">استرجاع خلال 24 ساعة للحسابات غير المفعلة</li>
+            <li data-i18n="policy2">حماية بياناتك وطرق دفع موثوقة</li>
+            <li data-i18n="policy3">إشعارات بريدية فورية بعد الشراء</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <strong>Bathyoon Store</strong>
+      <p data-i18n="footerText">منصة سعودية لبيع المنتجات الرقمية وحسابات الألعاب.</p>
+    </div>
+    <div class="footer__links">
+      <a href="#about" data-i18n="footerAbout">عن المتجر</a>
+      <a href="#catalog" data-i18n="footerCatalog">المنتجات</a>
+      <a href="#support" data-i18n="footerSupport">الدعم</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
