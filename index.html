@@ -3,126 +3,252 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bathyoon Store | باثيون ستور</title>
+  <title>باثيون ستور | Bathyoon Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div id="cursor"></div>
   <header class="topbar">
     <div class="brand">
       <span class="logo">B</span>
-      <div>
-        <strong>Bathyoon Store</strong>
-        <small data-i18n="tagline">Digital gaming marketplace</small>
+      <div class="brand__text">
+        <strong>باثيون ستور</strong>
+        <small>Bathyoon Store</small>
       </div>
     </div>
-    <div class="controls">
-      <div class="control">
-        <label for="language" data-i18n="language">اللغة</label>
-        <select id="language">
-          <option value="ar">العربية</option>
-          <option value="en">English</option>
-        </select>
-      </div>
-      <div class="control">
-        <label for="currency" data-i18n="currency">العملة</label>
-        <select id="currency">
-          <option value="SAR">SAR ﷼</option>
-          <option value="USD">USD $</option>
-        </select>
-      </div>
-      <a class="cta" href="#catalog" data-i18n="shopNow">تسوق الآن</a>
-    </div>
+    <nav class="nav">
+      <a href="#home">الرئيسية</a>
+      <a href="#services">الخدمات</a>
+      <a href="#payments">طرق الدفع</a>
+      <a href="#contact">التواصل</a>
+    </nav>
+    <a class="pill" href="https://bathyoon.com/" target="_blank" rel="noreferrer">الدخول للمتجر</a>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero__text">
-        <p class="eyebrow" data-i18n="eyebrow">BathYoon.com — متجر موثوق للمنتجات الرقمية</p>
-        <h1 data-i18n="headline">حسابات وأكواد الألعاب الرقمية بأسعار عادلة وخدمة فورية</h1>
-        <p class="lead" data-i18n="lead">
-          نوفر حسابات Call of Duty وBlack Ops 7 وRocket League ومنتجات Forza Horizon 5 مع توصيل فوري، دعم سريع، وضمان استرجاع خلال 24 ساعة.
+    <section id="home" class="section hero">
+      <div class="hero__content" data-animate>
+        <p class="eyebrow">منصة سعودية موثوقة للخدمات الرقمية</p>
+        <h1>باثيون ستور – كل ما تحتاجه لعالم الألعاب والاشتراكات الرقمية في مكان واحد</h1>
+        <p class="lead">
+          نقدم خدمات وحسابات الألعاب، اشتراكات رقمية أصلية، ومنتجات خاصة للدسكورد بتسليم سريع ودعم فني مستمر.
         </p>
         <div class="hero__actions">
-          <a href="#catalog" class="primary" data-i18n="browse">استكشف المتجر</a>
-          <a href="#support" class="secondary" data-i18n="support">تواصل مع الدعم</a>
+          <a class="btn primary" href="https://bathyoon.com/" target="_blank" rel="noreferrer">الدخول للمتجر</a>
+          <a class="btn ghost" href="https://discord.gg/byh" target="_blank" rel="noreferrer">الانضمام للدسكورد</a>
         </div>
-        <ul class="badges">
-          <li data-i18n="badgeTrusted">دفع آمن وسريع</li>
-          <li data-i18n="badgeInstant">تسليم مباشر على بريدك أو المنصة</li>
-          <li data-i18n="badgeCurrency">يدعم الريال السعودي والدولار الأمريكي</li>
-        </ul>
-      </div>
-      <div class="hero__card">
-        <div class="hero__card__header">
-          <span class="pill" data-i18n="featured">عرض مميز</span>
-          <h2 data-i18n="featuredTitle">حزمة إطلاق Black Ops 7</h2>
-          <p data-i18n="featuredDesc">حساب جاهز مع إضافات حصرية وتفعيل فوري.</p>
+        <div class="why-us">
+          <h3>لماذا تختارنا؟</h3>
+          <ul>
+            <li>تسليم سريع على أغلب الطلبات</li>
+            <li>ضمان واستبدال عند حدوث مشاكل في المنتج حسب السياسة</li>
+            <li>دعم فني عبر الدسكورد</li>
+            <li>أسعار منافسة</li>
+            <li>خبرة وفهم في مجال الألعاب</li>
+          </ul>
         </div>
-        <div class="price" data-price="289" data-i18n-price>
-          <span class="amount">289</span>
-          <span class="currency">﷼</span>
-        </div>
-        <ul class="hero__card__list">
-          <li data-i18n="feature1">ضمان استرجاع لمدة 24 ساعة</li>
-          <li data-i18n="feature2">دعم فني بالعربي والإنجليزي</li>
-          <li data-i18n="feature3">تفعيل فوري عبر البريد</li>
-        </ul>
-        <button class="primary full" data-i18n="ctaHero">أضف للسلة</button>
       </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="section__header">
-        <p class="eyebrow" data-i18n="aboutEyebrow">لماذا باثيون؟</p>
-        <h2 data-i18n="aboutTitle">المتجر المتخصص في المنتجات الرقمية</h2>
-        <p class="section__lead" data-i18n="aboutText">
-          باثيون ستور متجر سعودي متخصص في بيع الحسابات والأكواد الرقمية للألعاب الرائجة. نركز على تجربة شراء سهلة، دعم مباشر، وسياسات واضحة لحماية اللاعبين.
-        </p>
-      </div>
-      <div class="grid features">
-        <article class="card">
-          <h3 data-i18n="featureCard1Title">منتجات أصلية ومضمونة</h3>
-          <p data-i18n="featureCard1Text">جميع الأكواد والحسابات يتم اختبارها وتوثيقها قبل التسليم.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="featureCard2Title">تحويل عملات مرن</h3>
-          <p data-i18n="featureCard2Text">ادفع بالريال السعودي أو الدولار الأمريكي مع تحديث السعر تلقائياً.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="featureCard3Title">تسليم فوري</h3>
-          <p data-i18n="featureCard3Text">يصل الرمز أو بيانات الحساب للبريد أو المنصة خلال دقائق.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="catalog" class="section">
-      <div class="section__header">
-        <p class="eyebrow" data-i18n="catalogEyebrow">تصفح حسب الفئة</p>
-        <h2 data-i18n="catalogTitle">ألعاب وحسابات جاهزة</h2>
-      </div>
-      <div id="product-list" class="grid products"></div>
-    </section>
-
-    <section id="support" class="section section--highlight">
-      <div class="support">
-        <div>
-          <p class="eyebrow" data-i18n="supportEyebrow">خدمة العملاء</p>
-          <h2 data-i18n="supportTitle">دعم سريع 24/7</h2>
-          <p data-i18n="supportText">نساعدك في التفعيل، الدفع، واسترجاع المنتجات في حال وجود مشكلة خلال 24 ساعة.</p>
-          <div class="support__actions">
-            <a class="primary" href="mailto:support@bathyoon.com" data-i18n="supportEmail">support@bathyoon.com</a>
-            <a class="secondary" href="https://wa.me/966000000000" target="_blank" rel="noreferrer" data-i18n="supportChat">دردشة واتساب</a>
+      <div class="hero__panel" data-animate>
+        <div class="panel__card">
+          <span class="pill">قسم التقييمات</span>
+          <div class="reviews" id="reviews">
+            <div class="review">⭐⭐⭐⭐⭐ "تعامل محترم وتسليم سريع!"</div>
+            <div class="review">⭐⭐⭐⭐⭐ "اشتراك ChatGPT Plus وصل فوراً، شكراً!"</div>
+            <div class="review">⭐⭐⭐⭐⭐ "أفضل متجر سعودي في المجال"</div>
+            <div class="review">⭐⭐⭐⭐⭐ "الدعم الفني محترف ومتواجد دائماً"</div>
+          </div>
+          <div class="panel__notice">
+            "الموقع تعريفي حالياً، الطلب يتم عبر المتجر أو الدسكورد"
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="services" class="section" data-animate>
+      <div class="section__header">
+        <p class="eyebrow">الخدمات والمنتجات</p>
+        <h2>تعريف عروض باثيون ستور</h2>
+        <p class="section__lead">تعريف واضح للخدمات بدون شراء مباشر داخل الموقع. الطلب يتم عبر المتجر أو الدسكورد.</p>
+      </div>
+      <div class="grid cards">
+        <article class="card">
+          <h3>حسابات ألعاب Smurf</h3>
+          <ul>
+            <li>حسابات مفتوح الرانك</li>
+            <li>مناسب للبدء من جديد أو اللعب مع أصدقاء برنكات مختلفة</li>
+            <li>الألعاب المتوفرة: Valorant – Overwatch – Rocket League</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>أرصدة الألعاب</h3>
+          <ul>
+            <li>رصيد عملة Forza Horizon 5 Credits</li>
+            <li>شحن سهل وآمن مع دعم لأي مشكلة</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>الاشتراكات الرقمية</h3>
+          <ul>
+            <li>ChatGPT Plus</li>
+            <li>Xbox Game Pass</li>
+            <li>جميع الاشتراكات أصلية مع تسليم فوري</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>خدمات الدسكورد</h3>
+          <ul>
+            <li>Nitro Gift</li>
+            <li>تأثيرات للحساب</li>
+            <li>إنشاء وترتيب سيرفرات دسكورد</li>
+          </ul>
+        </article>
+      </div>
+      <div class="alert" role="note">
+        ⚠️ تنبيه: الطلبات تتم حالياً عبر المتجر أو الدسكورد، لا يوجد شراء مباشر داخل الموقع بسبب التحديثات وإضافة أقسام جديدة قريباً.
+      </div>
+    </section>
+
+    <section id="payments" class="section section--muted" data-animate>
+      <div class="section__header">
+        <p class="eyebrow">طرق الدفع</p>
+        <h2>خيارات الدفع والعملات</h2>
+      </div>
+      <div class="grid payment-grid">
         <div class="card">
-          <h3 data-i18n="policiesTitle">سياسة واضحة</h3>
-          <ul class="list">
-            <li data-i18n="policy1">استرجاع خلال 24 ساعة للحسابات غير المفعلة</li>
-            <li data-i18n="policy2">حماية بياناتك وطرق دفع موثوقة</li>
-            <li data-i18n="policy3">إشعارات بريدية فورية بعد الشراء</li>
+          <h3>العملات المعتمدة</h3>
+          <ul>
+            <li>الريال السعودي (SAR)</li>
+            <li>اليورو (EUR)</li>
+            <li>الدولار الأمريكي (USD)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>الوسائل المتاحة</h3>
+          <ul>
+            <li>مدى</li>
+            <li>فيزا / ماستركارد</li>
+            <li>Apple Pay</li>
+            <li>تحويل بنكي إذا توفر</li>
+          </ul>
+          <p class="muted">سيتم إضافة وسائل دفع إضافية قريباً حسب تحديث المتجر.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section" data-animate>
+      <div class="section__header">
+        <p class="eyebrow">التواصل</p>
+        <h2>اطلب أو استفسر بسهولة</h2>
+        <p class="section__lead">لطلب أو استفسار يرجى التواصل عبر الروابط الرسمية.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn primary" href="https://bathyoon.com/" target="_blank" rel="noreferrer">المتجر الرسمي</a>
+        <a class="btn ghost" href="https://discord.gg/byh" target="_blank" rel="noreferrer">سيرفر الدسكورد</a>
+      </div>
+    </section>
+
+    <section id="warranty" class="section section--muted" data-animate>
+      <div class="section__header">
+        <p class="eyebrow">سياسة الضمان</p>
+        <h2>حماية ودعم للمنتجات الرقمية</h2>
+        <p class="section__lead">الضمان يهدف للحماية وليس الاسترجاع، والاستبدال يتم فقط عند وجود مشكلة تقنية حقيقية بالمنتج.</p>
+      </div>
+      <div class="grid cards">
+        <article class="card">
+          <h3>بنود السياسة</h3>
+          <ul>
+            <li>الضمان يختلف من منتج لآخر حسب التوضيح في صفحة الخدمة داخل المتجر.</li>
+            <li>في حال وجود مشكلة في الوصول للمنتج أو الحساب يتم تقديم حل بديل أو استبدال إن أمكن.</li>
+            <li>في حالة misuse أو سوء استخدام المنتج من طرف العميل يتم إلغاء الضمان.</li>
+            <li>المنتجات المرتبطة بالألعاب أو الدسكورد تخضع لسياسة المنصة الأصلية.</li>
+            <li>لا يتم الاسترجاع المالي بعد استلام المنتج بحالة صحيحة.</li>
+            <li>التواصل من أجل الضمان يتم حصراً عبر الدسكورد في تذكرة الدعم.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>نقطة توضيح</h3>
+          <p>الضمان يهدف للحماية وليس الاسترجاع، والاستبدال يتم فقط عند وجود مشكلة تقنية حقيقية بالمنتج.</p>
+          <div class="muted">نحن نهتم بتجربة آمنة ومريحة لجميع العملاء.</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" class="section" data-animate>
+      <div class="section__header">
+        <p class="eyebrow">الأسئلة الشائعة</p>
+        <h2>إجابات سريعة</h2>
+      </div>
+      <div class="faq">
+        <div class="faq__item">
+          <h3>كيف أطلب منتج أو خدمة؟</h3>
+          <p>الطلب يكون من خلال المتجر أو عبر التواصل في سيرفر الدسكورد.</p>
+        </div>
+        <div class="faq__item">
+          <h3>هل الشراء داخل الموقع متاح؟</h3>
+          <p>حالياً الموقع تعريفي فقط، والشراء يتم عبر رابط المتجر الرسمي وسيتم إضافة خيارات شراء لاحقاً عند الانتهاء من التحديثات.</p>
+        </div>
+        <div class="faq__item">
+          <h3>هل يوجد ضمان على المنتجات؟</h3>
+          <p>نعم، يوجد ضمان حسب نوع المنتج، وتوضيحه يكون مكتوب في صفحة المنتج.</p>
+        </div>
+        <div class="faq__item">
+          <h3>ما هي طرق الدفع المتاحة؟</h3>
+          <p>مدى، فيزا، ماستركارد، Apple Pay، ودفع بالريال السعودي أو اليورو أو الدولار.</p>
+        </div>
+        <div class="faq__item">
+          <h3>متى يتم التسليم؟</h3>
+          <p>في الغالب خلال دقائق من تأكيد الدفع، وفي حال التأخير يرجى التواصل عبر تذكرة دعم في الدسكورد.</p>
+        </div>
+        <div class="faq__item">
+          <h3>هل يمكنني استرجاع المبلغ؟</h3>
+          <p>الاسترجاع غير متاح بعد تسليم المنتج بحالة سليمة، إلا إذا كانت المشكلة من المصدر وغير قابلة للحل.</p>
+        </div>
+        <div class="faq__item">
+          <h3>هل الحسابات آمنة؟</h3>
+          <p>الحسابات تُسلّم كما هي، والاستخدام مسؤولية العميل، ولا يحق تغيير معلومات غير مسموح بها حسب شروط الضمان.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section--muted" data-animate>
+      <div class="section__header">
+        <p class="eyebrow">من نحن</p>
+        <h2>باثيون ستور | Bathyoon Store</h2>
+        <p class="section__lead">منصة سعودية متخصصة في تقديم خدمات ألعاب واشتراكات رقمية بأسلوب احترافي وموثوق.</p>
+      </div>
+      <div class="grid about">
+        <div class="card">
+          <h3>رؤيتنا</h3>
+          <p>أن نكون الخيار الأول للاعبين العرب في مجال الحسابات والاشتراكات والخدمات الرقمية.</p>
+        </div>
+        <div class="card">
+          <h3>ماذا نقدم؟</h3>
+          <ul>
+            <li>حسابات Smurf مفتوح الرانك للعب بأريحية</li>
+            <li>كريدت Forza Horizon 5 للترقية والتطوير</li>
+            <li>اشتراكات ChatGPT Plus و Xbox Game Pass</li>
+            <li>منتجات وخدمات الدسكورد مثل Nitro وتأثيرات الحساب</li>
+            <li>دعم فني وتنسيق فني لسيرفرات دسكورد</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>قيمنا</h3>
+          <ul>
+            <li>الشفافية</li>
+            <li>الأمان</li>
+            <li>السرعة في التسليم</li>
+            <li>احترام العميل</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>طموحنا المستقبلي</h3>
+          <ul>
+            <li>إضافة نظام شراء مباشر داخل الموقع</li>
+            <li>زيادة وسائل الدفع المختلفة</li>
+            <li>توفير خدمات إضافية للألعاب والمنصات الجديدة</li>
           </ul>
         </div>
       </div>
@@ -130,14 +256,22 @@
   </main>
 
   <footer class="footer">
-    <div>
-      <strong>Bathyoon Store</strong>
-      <p data-i18n="footerText">منصة سعودية لبيع المنتجات الرقمية وحسابات الألعاب.</p>
+    <div class="footer__top">
+      <div>
+        <strong>باثيون ستور</strong>
+        <p>© باثيون ستور 2025 — جميع الحقوق محفوظة</p>
+        <p>صنع في المملكة العربية السعودية 🇸🇦</p>
+      </div>
+      <div class="footer__links">
+        <a href="#home">الرئيسية</a>
+        <a href="#services">الخدمات</a>
+        <a href="#payments">طرق الدفع</a>
+        <a href="#contact">التواصل</a>
+      </div>
     </div>
-    <div class="footer__links">
-      <a href="#about" data-i18n="footerAbout">عن المتجر</a>
-      <a href="#catalog" data-i18n="footerCatalog">المنتجات</a>
-      <a href="#support" data-i18n="footerSupport">الدعم</a>
+    <div class="footer__cta">
+      <a href="https://bathyoon.com/" target="_blank" rel="noreferrer">المتجر الإلكتروني</a>
+      <a href="https://discord.gg/byh" target="_blank" rel="noreferrer">الدسكورد</a>
     </div>
   </footer>
 
