@@ -11,6 +11,11 @@
 </head>
 <body>
   <div id="cursor"></div>
+  <div class="bg-layer">
+    <div class="bg-glow"></div>
+    <div class="bg-dots"></div>
+    <div class="bg-grid"></div>
+  </div>
   <header class="topbar">
     <div class="brand">
       <span class="logo">B</span>
@@ -26,6 +31,15 @@
         <span class="icon">🌙</span>
         <span id="theme-label">Dark</span>
       </button>
+      <label class="chip select-chip" for="background-select">
+        <span class="icon">✨</span>
+        <select id="background-select" aria-label="اختر خلفية التوهج أو الشبكة أو النقاط">
+          <option value="glow">Glow</option>
+          <option value="dots">Dots</option>
+          <option value="grid">Grid</option>
+          <option value="clean">Clean</option>
+        </select>
+      </label>
       <label class="chip select-chip" for="currency-select">
         <span class="icon">💱</span>
         <select id="currency-select" aria-label="اختر العملة">

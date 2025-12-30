@@ -69,6 +69,7 @@ const elements = {
   langToggle: document.getElementById('lang-toggle'),
   themeToggle: document.getElementById('theme-toggle'),
   currencySelect: document.getElementById('currency-select'),
+  backgroundSelect: document.getElementById('background-select'),
   storeBtn: document.getElementById('store-btn'),
 };
 
@@ -107,6 +108,12 @@ const content = {
         'دعم فني عبر تذاكر الدسكورد',
         'خبرة في مجال الألعاب والاشتراكات',
         'أسعار منافسة وخيارات دفع مرنة',
+      ],
+      stats: [
+        { label: 'إعداد فوري', detail: 'تجهيز الطلب عبر المتجر أو الدسكورد مباشرة' },
+        { label: 'حماية الحساب', detail: 'التزام بسياسة الضمان والبدائل عند الحاجة' },
+        { label: 'دعم 24/7', detail: 'قنوات تواصل جاهزة لأي استفسار' },
+        { label: 'جاهزية 99.9٪', detail: 'متابعة دائمة للتسليم والاستجابة' },
       ],
       highlightTitle: 'تجربة متناسقة',
       highlightItems: ['موقع متجاوب', 'لغة عربية/إنجليزية', 'تحويل عملات فوري', 'سمات داكنة وفاتحة'],
@@ -270,6 +277,15 @@ const content = {
     },
     themeLabel: { dark: 'فاتح', light: 'داكن' },
     langLabel: 'EN',
+    background: {
+      label: 'الخلفية',
+      options: {
+        glow: 'توهج',
+        dots: 'نقاط',
+        grid: 'شبكة',
+        clean: 'هادئة',
+      },
+    },
   },
   en: {
     lang: 'en',
@@ -299,6 +315,12 @@ const content = {
         'Support tickets on Discord',
         'Gaming and subscription expertise',
         'Competitive pricing and flexible payments',
+      ],
+      stats: [
+        { label: 'Instant setup', detail: 'Requests handled through the store or Discord quickly' },
+        { label: 'Account protection', detail: 'Warranty clarity with replacements when possible' },
+        { label: '24/7 support', detail: 'Always-on channels for help and questions' },
+        { label: '99.9% uptime', detail: 'Consistent delivery and response readiness' },
       ],
       highlightTitle: 'Smooth experience',
       highlightItems: ['Responsive layout', 'Arabic / English', 'Instant currency switch', 'Dark & Light modes'],
@@ -462,6 +484,15 @@ const content = {
     },
     themeLabel: { dark: 'Light', light: 'Dark' },
     langLabel: 'AR',
+    background: {
+      label: 'Background',
+      options: {
+        glow: 'Glow',
+        dots: 'Dots',
+        grid: 'Grid',
+        clean: 'Clean',
+      },
+    },
   },
 };
 
@@ -469,10 +500,12 @@ const state = {
   lang: localStorage.getItem('lang') || 'ar',
   theme: localStorage.getItem('theme') || 'dark',
   currency: localStorage.getItem('currency') || 'SAR',
+  background: localStorage.getItem('background') || 'glow',
 };
 
 document.documentElement.setAttribute('data-theme', state.theme);
 elements.currencySelect.value = state.currency;
+elements.backgroundSelect.value = state.background;
 
 elements.langToggle.addEventListener('click', () => {
   state.lang = state.lang === 'ar' ? 'en' : 'ar';
@@ -492,6 +525,12 @@ elements.currencySelect.addEventListener('change', (e) => {
   renderOffers();
 });
 
+elements.backgroundSelect.addEventListener('change', (e) => {
+  state.background = e.target.value;
+  localStorage.setItem('background', state.background);
+  applyBackground();
+});
+
 function formatPrice(amountSar) {
   const rate = rates[state.currency] || 1;
   const converted = amountSar * rate;
@@ -508,6 +547,10 @@ function applyTheme() {
   elements.themeLabel.textContent = state.theme === 'dark' ? labels.dark : labels.light;
 }
 
+function applyBackground() {
+  document.body.setAttribute('data-bg', state.background);
+}
+
 function applyLanguage() {
   const t = content[state.lang];
   document.documentElement.lang = t.lang;
@@ -516,6 +559,10 @@ function applyLanguage() {
   elements.brandName.textContent = t.brand.name;
   elements.brandSub.textContent = t.brand.sub;
   elements.storeBtn.textContent = t.hero.actions.store;
+  elements.backgroundSelect.innerHTML = Object.entries(t.background.options)
+    .map(([value, label]) => `<option value="${value}">${label}</option>`)
+    .join('');
+  elements.backgroundSelect.value = state.background;
   applyTheme();
   renderNav();
   renderHero();
@@ -545,7 +592,7 @@ function renderHero() {
   const t = content[state.lang].hero;
   elements.heroContent.innerHTML = `
     <div class="hero__content">
-      <p class="eyebrow">${t.eyebrow}</p>
+      <div class="hero__pill">${t.eyebrow}</div>
       <h1>${t.title}</h1>
       <p class="lead">${t.lead}</p>
       <div class="hero__actions">
@@ -557,12 +604,35 @@ function renderHero() {
         <ul>${t.why.map((item) => `<li>${item}</li>`).join('')}</ul>
       </div>
     </div>
-    <div class="panel__card">
-      <span class="pill">${t.highlightTitle}</span>
-      <div class="grid" style="margin:14px 0 10px; grid-template-columns: repeat(auto-fit, minmax(140px,1fr));">
-        ${t.highlightItems.map((item) => `<div class="marquee__item">${item}</div>`).join('')}
+    <div class="panel__card hero__panel">
+      <div class="panel__header">
+        <span class="pill">${t.highlightTitle}</span>
+        <p class="panel__eyebrow">${t.notice}</p>
       </div>
-      <div class="panel__notice">${t.notice}</div>
+      <div class="feature-grid">
+        ${t.highlightItems
+          .map(
+            (item) => `
+          <div class="feature-chip">
+            <span class="dot"></span>
+            <span>${item}</span>
+          </div>
+        `
+          )
+          .join('')}
+      </div>
+      <div class="stats">
+        ${t.stats
+          .map(
+            (stat) => `
+          <div class="stat-card">
+            <div class="stat-card__label">${stat.label}</div>
+            <div class="stat-card__detail">${stat.detail}</div>
+          </div>
+        `
+          )
+          .join('')}
+      </div>
     </div>
   `;
 }
@@ -731,3 +801,4 @@ function attachSmoothScroll() {
 }
 
 applyLanguage();
+applyBackground();
