@@ -43,6 +43,7 @@ const elements = {
   langToggle: document.getElementById('lang-toggle'),
   themeToggle: document.getElementById('theme-toggle'),
   currencySelect: document.getElementById('currency-select'),
+  colorSelect: document.getElementById('color-select'),
   storeBtn: document.getElementById('store-btn'),
 };
 
@@ -222,6 +223,19 @@ const content = {
     },
     themeLabel: { dark: 'فاتح', light: 'داكن' },
     langLabel: 'EN',
+    colorOptions: {
+      label: 'ألوان الواجهة',
+      langLabel: 'تبديل اللغة',
+      currencyLabel: 'اختيار العملة',
+      options: {
+        blue: 'الأزرق',
+        purple: 'البنفسجي',
+        sky: 'السماوي',
+        green: 'الأخضر',
+        yellow: 'الأصفر',
+        pink: 'الوردي',
+      },
+    },
   },
   en: {
     lang: 'en',
@@ -398,6 +412,94 @@ const content = {
     },
     themeLabel: { dark: 'Light', light: 'Dark' },
     langLabel: 'AR',
+    colorOptions: {
+      label: 'Accent color',
+      langLabel: 'Toggle language',
+      currencyLabel: 'Pick currency',
+      options: {
+        blue: 'Blue',
+        purple: 'Purple',
+        sky: 'Sky',
+        green: 'Green',
+        yellow: 'Yellow',
+        pink: 'Pink',
+      },
+    },
+  },
+};
+
+const colorSchemes = {
+  blue: {
+    accent: '#6fb8ff',
+    accent2: '#7be3ff',
+    grads: [
+      'rgba(68, 130, 255, 0.45)',
+      'rgba(134, 76, 255, 0.35)',
+      'rgba(65, 202, 165, 0.38)',
+      'rgba(255, 210, 98, 0.28)',
+      'rgba(235, 132, 178, 0.3)',
+      'rgba(132, 202, 235, 0.32)',
+    ],
+  },
+  purple: {
+    accent: '#b38bff',
+    accent2: '#7ed3ff',
+    grads: [
+      'rgba(173, 125, 255, 0.45)',
+      'rgba(104, 73, 229, 0.42)',
+      'rgba(84, 197, 171, 0.32)',
+      'rgba(255, 205, 132, 0.22)',
+      'rgba(236, 143, 214, 0.36)',
+      'rgba(145, 214, 255, 0.32)',
+    ],
+  },
+  sky: {
+    accent: '#8ddcff',
+    accent2: '#6be9e1',
+    grads: [
+      'rgba(109, 206, 255, 0.42)',
+      'rgba(95, 144, 255, 0.34)',
+      'rgba(79, 223, 196, 0.34)',
+      'rgba(242, 216, 138, 0.2)',
+      'rgba(230, 158, 205, 0.32)',
+      'rgba(120, 215, 255, 0.38)',
+    ],
+  },
+  green: {
+    accent: '#7de2b8',
+    accent2: '#9ef28f',
+    grads: [
+      'rgba(108, 224, 183, 0.42)',
+      'rgba(106, 164, 255, 0.32)',
+      'rgba(104, 237, 180, 0.42)',
+      'rgba(245, 221, 140, 0.24)',
+      'rgba(214, 158, 205, 0.28)',
+      'rgba(126, 214, 205, 0.36)',
+    ],
+  },
+  yellow: {
+    accent: '#ffd166',
+    accent2: '#ffe38f',
+    grads: [
+      'rgba(255, 210, 102, 0.46)',
+      'rgba(134, 102, 255, 0.32)',
+      'rgba(108, 216, 176, 0.3)',
+      'rgba(255, 231, 150, 0.46)',
+      'rgba(242, 169, 148, 0.3)',
+      'rgba(152, 214, 235, 0.32)',
+    ],
+  },
+  pink: {
+    accent: '#ff9acb',
+    accent2: '#a7c2ff',
+    grads: [
+      'rgba(255, 154, 203, 0.44)',
+      'rgba(164, 112, 255, 0.36)',
+      'rgba(104, 223, 189, 0.32)',
+      'rgba(255, 214, 140, 0.26)',
+      'rgba(238, 151, 192, 0.42)',
+      'rgba(160, 210, 255, 0.36)',
+    ],
   },
 };
 
@@ -405,6 +507,7 @@ const state = {
   lang: localStorage.getItem('lang') || 'ar',
   theme: localStorage.getItem('theme') || 'dark',
   currency: localStorage.getItem('currency') || 'SAR',
+  color: localStorage.getItem('color') || 'blue',
 };
 
 document.documentElement.setAttribute('data-theme', state.theme);
@@ -415,6 +518,13 @@ elements.langToggle.addEventListener('change', (e) => {
   state.lang = e.target.value;
   localStorage.setItem('lang', state.lang);
   applyLanguage();
+});
+
+elements.colorSelect.value = state.color;
+elements.colorSelect.addEventListener('change', (e) => {
+  state.color = e.target.value;
+  localStorage.setItem('color', state.color);
+  applyColor();
 });
 
 elements.themeToggle.addEventListener('click', () => {
@@ -435,6 +545,7 @@ function applyTheme() {
   const isDark = state.theme === 'dark';
   elements.themeLabel.textContent = isDark ? labels.dark : labels.light;
   elements.themeIcon.textContent = isDark ? '🌙' : '☀️';
+  applyColor();
 }
 
 function applyLanguage() {
@@ -442,6 +553,15 @@ function applyLanguage() {
   document.documentElement.lang = t.lang;
   document.documentElement.dir = t.dir;
   elements.langToggle.value = t.lang;
+  const palette = t.colorOptions;
+  elements.langToggle.setAttribute('aria-label', palette.langLabel);
+  elements.currencySelect.setAttribute('aria-label', palette.currencyLabel);
+  elements.colorSelect.setAttribute('aria-label', palette.label);
+  Array.from(elements.colorSelect.options).forEach((opt) => {
+    if (palette.options[opt.value]) {
+      opt.textContent = palette.options[opt.value];
+    }
+  });
   elements.brandName.textContent = t.brand.name;
   elements.brandSub.textContent = t.brand.sub;
   elements.storeBtn.textContent = t.hero.actions.store;
@@ -456,6 +576,14 @@ function applyLanguage() {
   renderFaq();
   renderAbout();
   renderFooter();
+}
+
+function applyColor() {
+  const scheme = colorSchemes[state.color] || colorSchemes.blue;
+  const root = document.documentElement;
+  root.style.setProperty('--accent', scheme.accent);
+  root.style.setProperty('--accent-2', scheme.accent2);
+  scheme.grads.forEach((g, idx) => root.style.setProperty(`--grad-${idx + 1}`, g));
 }
 
 function renderNav() {

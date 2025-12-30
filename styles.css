@@ -1,32 +1,40 @@
 :root {
-  --bg: #0b0d14;
-  --panel: #111526;
-  --card: #171c2e;
-  --muted: #c2c7d6;
-  --text: #f2f4fb;
-  --accent: #6ef0c6;
-  --accent-2: #8ea4ff;
-  --outline: rgba(255, 255, 255, 0.06);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-  --chip-bg: rgba(255, 255, 255, 0.06);
-  --chip-text: #f2f4fb;
+  --bg: #0f1833;
+  --panel: #15224a;
+  --card: #192c55;
+  --muted: #c5cbdd;
+  --text: #f5f7ff;
+  --accent: #6fb8ff;
+  --accent-2: #7be3ff;
+  --outline: rgba(255, 255, 255, 0.08);
+  --shadow: 0 20px 60px rgba(9, 15, 36, 0.4);
+  --chip-bg: rgba(255, 255, 255, 0.08);
+  --chip-text: #f5f7ff;
+  --topbar: rgba(17, 30, 64, 0.92);
+  --grad-1: rgba(68, 130, 255, 0.45);
+  --grad-2: rgba(134, 76, 255, 0.35);
+  --grad-3: rgba(65, 202, 165, 0.38);
+  --grad-4: rgba(255, 210, 98, 0.28);
+  --grad-5: rgba(235, 132, 178, 0.3);
+  --grad-6: rgba(132, 202, 235, 0.32);
   font-family: 'Cairo', system-ui, -apple-system, sans-serif;
   color: var(--text);
   background: var(--bg);
 }
 
 :root[data-theme="light"] {
-  --bg: #f5f7fb;
+  --bg: #eef3ff;
   --panel: #ffffff;
   --card: #ffffff;
-  --muted: #5f6680;
-  --text: #0e111c;
-  --accent: #2fd4a6;
-  --accent-2: #5c7cff;
-  --outline: rgba(12, 18, 32, 0.08);
-  --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  --chip-bg: rgba(12, 18, 32, 0.06);
-  --chip-text: #0e111c;
+  --muted: #4f5774;
+  --text: #0f1a30;
+  --accent: #4a8dff;
+  --accent-2: #6fe7ff;
+  --outline: rgba(15, 26, 48, 0.12);
+  --shadow: 0 16px 40px rgba(12, 24, 56, 0.12);
+  --chip-bg: rgba(15, 26, 48, 0.06);
+  --chip-text: #0f1a30;
+  --topbar: rgba(238, 243, 255, 0.96);
 }
 
 * {
@@ -66,16 +74,19 @@ body {
 }
 
 .bg-gradient {
-  background: radial-gradient(1200px circle at 10% 20%, rgba(92, 124, 255, 0.18), transparent 55%),
-    radial-gradient(900px circle at 80% 0%, rgba(110, 240, 198, 0.16), transparent 50%),
-    radial-gradient(1200px circle at 50% 80%, rgba(160, 125, 255, 0.15), transparent 55%),
-    linear-gradient(145deg, rgba(6, 10, 22, 0.95), rgba(11, 13, 20, 0.9));
+  background: radial-gradient(1200px circle at 12% 18%, var(--grad-1), transparent 58%),
+    radial-gradient(900px circle at 80% 0%, var(--grad-3), transparent 52%),
+    radial-gradient(1200px circle at 72% 64%, var(--grad-2), transparent 56%),
+    radial-gradient(1200px circle at 28% 80%, var(--grad-5), transparent 60%),
+    radial-gradient(900px circle at 50% 100%, var(--grad-4), transparent 50%),
+    linear-gradient(135deg, #141f46, #152650 35%, #1b2f63);
 }
 
 .bg-glow {
-  background: radial-gradient(circle at 20% 20%, rgba(142, 164, 255, 0.18), transparent 38%),
-    radial-gradient(circle at 82% 8%, rgba(110, 240, 198, 0.2), transparent 42%),
-    radial-gradient(circle at 50% 80%, rgba(94, 124, 255, 0.12), transparent 42%);
+  background: radial-gradient(circle at 24% 16%, var(--grad-1), transparent 40%),
+    radial-gradient(circle at 82% 10%, var(--grad-3), transparent 45%),
+    radial-gradient(circle at 48% 88%, var(--grad-2), transparent 44%),
+    radial-gradient(circle at 10% 92%, var(--grad-6), transparent 48%);
   filter: blur(4px);
   mix-blend-mode: screen;
 }
@@ -119,14 +130,10 @@ a {
   gap: 16px;
   justify-content: space-between;
   padding: 14px 24px;
-  background: rgba(11, 13, 20, 0.9);
+  background: var(--topbar);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--outline);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-}
-
-:root[data-theme="light"] .topbar {
-  background: rgba(245, 247, 251, 0.96);
 }
 
 .brand {
@@ -141,7 +148,7 @@ a {
   display: grid;
   place-items: center;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #0b0d14;
+  color: #0f1a30;
   border-radius: 12px;
   font-weight: 800;
   box-shadow: var(--shadow);
@@ -155,6 +162,9 @@ a {
   display: flex;
   gap: 12px;
   align-items: center;
+  overflow-x: auto;
+  padding: 4px 0;
+  scrollbar-width: none;
 }
 
 .nav a {
@@ -168,6 +178,10 @@ a {
 .nav a:hover {
   background: rgba(255, 255, 255, 0.08);
   color: var(--text);
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
 }
 
 .topbar__actions {
@@ -202,6 +216,22 @@ a {
   color: inherit;
   font: inherit;
   outline: none;
+  appearance: none;
+  padding-inline-end: 16px;
+  padding-inline-start: 2px;
+  min-width: 92px;
+}
+
+.select-chip {
+  position: relative;
+}
+
+.select-chip::after {
+  content: '▾';
+  position: absolute;
+  inset-inline-end: 10px;
+  font-size: 12px;
+  opacity: 0.7;
 }
 
 .pill {
@@ -209,7 +239,7 @@ a {
   align-items: center;
   gap: 8px;
   background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  color: #0b0d14;
+  color: #0f1a30;
   padding: 10px 14px;
   border-radius: 14px;
   font-weight: 800;
@@ -306,7 +336,7 @@ main {
 
 .btn.primary {
   background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  color: #0b0d14;
+  color: #0f1a30;
   border: none;
 }
 
