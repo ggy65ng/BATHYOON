@@ -1,28 +1,3 @@
-const cursor = document.getElementById('cursor');
-let cursorVisible = true;
-
-if (cursor) {
-  window.addEventListener('mousemove', (e) => {
-    cursorVisible = true;
-    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-  });
-
-  window.addEventListener('mousedown', () => {
-    cursor.style.width = '22px';
-    cursor.style.height = '22px';
-  });
-
-  window.addEventListener('mouseup', () => {
-    cursor.style.width = '18px';
-    cursor.style.height = '18px';
-  });
-
-  window.addEventListener('scroll', () => {
-    if (!cursorVisible) return;
-    cursor.style.opacity = window.innerWidth <= 540 ? '0' : '1';
-  });
-}
-
 const animateElements = document.querySelectorAll('[data-animate]');
 const observer = new IntersectionObserver(
   (entries) => {
@@ -46,8 +21,6 @@ const elements = {
   servicesHeader: document.getElementById('services-header'),
   servicesGrid: document.getElementById('services-grid'),
   servicesAlert: document.getElementById('services-alert'),
-  offersHeader: document.getElementById('offers-header'),
-  offersGrid: document.getElementById('offers-grid'),
   paymentsHeader: document.getElementById('payments-header'),
   paymentsGrid: document.getElementById('payments-grid'),
   reviewsHeader: document.getElementById('reviews-header'),
@@ -66,17 +39,11 @@ const elements = {
   footerLinks: document.getElementById('footer-links'),
   footerCta: document.getElementById('footer-cta'),
   themeLabel: document.getElementById('theme-label'),
+  themeIcon: document.getElementById('theme-icon'),
   langToggle: document.getElementById('lang-toggle'),
   themeToggle: document.getElementById('theme-toggle'),
   currencySelect: document.getElementById('currency-select'),
-  backgroundSelect: document.getElementById('background-select'),
   storeBtn: document.getElementById('store-btn'),
-};
-
-const rates = {
-  SAR: 1,
-  USD: 0.27,
-  EUR: 0.25,
 };
 
 const content = {
@@ -86,11 +53,11 @@ const content = {
     brand: { name: 'باثيون ستور', sub: 'Bathyoon Store' },
     nav: [
       { id: 'home', label: 'الرئيسية' },
+      { id: 'about', label: 'من نحن' },
       { id: 'services', label: 'الخدمات' },
-      { id: 'offers', label: 'عروض الأسعار' },
-      { id: 'payments', label: 'طرق الدفع' },
       { id: 'faq', label: 'الأسئلة' },
-      { id: 'contact', label: 'التواصل' },
+      { id: 'warranty', label: 'سياسة الضمان' },
+      { id: 'contact', label: 'تواصل' },
     ],
     hero: {
       eyebrow: 'منصة سعودية موثوقة للخدمات الرقمية',
@@ -121,7 +88,7 @@ const content = {
     },
     services: {
       eyebrow: 'الخدمات والمنتجات',
-      title: 'تعريف عروض باثيون ستور',
+      title: 'عرض خدمات باثيون ستور',
       lead: 'تعريف واضح للخدمات بدون شراء مباشر داخل الموقع. الطلب يتم عبر المتجر أو الدسكورد.',
       cards: [
         {
@@ -143,28 +110,6 @@ const content = {
       ],
       alert: '⚠️ تنبيه: الطلبات تتم حالياً عبر المتجر أو الدسكورد، لا يوجد شراء مباشر داخل الموقع.',
     },
-    offers: {
-      eyebrow: 'عروض الأسعار التقريبية',
-      title: 'أسعار بالعملات المفضلة',
-      lead: 'عرض تعريفي لأسعار تقديرية بدون زر شراء. يتم التأكيد في المتجر أو الدسكورد.',
-      cards: [
-        {
-          title: 'حساب Smurf | Valorant',
-          price: 150,
-          note: 'حساب جاهز للعب المفتوح مع ضمان الاستخدام الصحيح.',
-        },
-        {
-          title: 'اشتراك ChatGPT Plus شهري',
-          price: 85,
-          note: 'اشتراك رقمي أصلي مع تسليم فوري وتفعيل موثوق.',
-        },
-        {
-          title: 'Nitro Gift | Discord',
-          price: 45,
-          note: 'إهداء نيترو مع تفعيل سريع ودعم لأي مشكلة.',
-        },
-      ],
-    },
     payments: {
       eyebrow: 'طرق الدفع',
       title: 'خيارات الدفع والعملات',
@@ -172,7 +117,7 @@ const content = {
         {
           title: 'العملات المعتمدة',
           list: ['الريال السعودي (SAR)', 'اليورو (EUR)', 'الدولار الأمريكي (USD)'],
-          note: 'يتم عرض الأسعار بالعملة التي تختارها مباشرة.',
+          note: 'نحفظ اختيار العملة للمستقبل حتى مع أن الموقع تعريفي حالياً.',
         },
         {
           title: 'الوسائل المتاحة',
@@ -277,15 +222,6 @@ const content = {
     },
     themeLabel: { dark: 'فاتح', light: 'داكن' },
     langLabel: 'EN',
-    background: {
-      label: 'الخلفية',
-      options: {
-        glow: 'توهج',
-        dots: 'نقاط',
-        grid: 'شبكة',
-        clean: 'هادئة',
-      },
-    },
   },
   en: {
     lang: 'en',
@@ -293,10 +229,10 @@ const content = {
     brand: { name: 'Bathyoon Store', sub: 'متجر باثيون' },
     nav: [
       { id: 'home', label: 'Home' },
+      { id: 'about', label: 'About' },
       { id: 'services', label: 'Services' },
-      { id: 'offers', label: 'Pricing' },
-      { id: 'payments', label: 'Payments' },
       { id: 'faq', label: 'FAQ' },
+      { id: 'warranty', label: 'Warranty' },
       { id: 'contact', label: 'Contact' },
     ],
     hero: {
@@ -350,28 +286,6 @@ const content = {
       ],
       alert: '⚠️ Note: Orders are processed through the store or Discord. No direct checkout on the site yet.',
     },
-    offers: {
-      eyebrow: 'Sample pricing',
-      title: 'Choose your currency',
-      lead: 'Indicative pricing only. Final confirmation happens on the store or Discord.',
-      cards: [
-        {
-          title: 'Smurf Account | Valorant',
-          price: 150,
-          note: 'Ready-to-play open rank account with proper use warranty.',
-        },
-        {
-          title: 'ChatGPT Plus monthly',
-          price: 85,
-          note: 'Original subscription with instant delivery.',
-        },
-        {
-          title: 'Discord Nitro Gift',
-          price: 45,
-          note: 'Quick gift activation with support included.',
-        },
-      ],
-    },
     payments: {
       eyebrow: 'Payments',
       title: 'Payment methods & currencies',
@@ -379,7 +293,7 @@ const content = {
         {
           title: 'Accepted currencies',
           list: ['Saudi Riyal (SAR)', 'Euro (EUR)', 'US Dollar (USD)'],
-          note: 'Prices display instantly in your selected currency.',
+          note: 'We remember your currency preference even while the site stays informational.',
         },
         {
           title: 'Available methods',
@@ -484,15 +398,6 @@ const content = {
     },
     themeLabel: { dark: 'Light', light: 'Dark' },
     langLabel: 'AR',
-    background: {
-      label: 'Background',
-      options: {
-        glow: 'Glow',
-        dots: 'Dots',
-        grid: 'Grid',
-        clean: 'Clean',
-      },
-    },
   },
 };
 
@@ -500,15 +405,14 @@ const state = {
   lang: localStorage.getItem('lang') || 'ar',
   theme: localStorage.getItem('theme') || 'dark',
   currency: localStorage.getItem('currency') || 'SAR',
-  background: localStorage.getItem('background') || 'glow',
 };
 
 document.documentElement.setAttribute('data-theme', state.theme);
 elements.currencySelect.value = state.currency;
-elements.backgroundSelect.value = state.background;
 
-elements.langToggle.addEventListener('click', () => {
-  state.lang = state.lang === 'ar' ? 'en' : 'ar';
+elements.langToggle.value = state.lang;
+elements.langToggle.addEventListener('change', (e) => {
+  state.lang = e.target.value;
   localStorage.setItem('lang', state.lang);
   applyLanguage();
 });
@@ -522,52 +426,29 @@ elements.themeToggle.addEventListener('click', () => {
 elements.currencySelect.addEventListener('change', (e) => {
   state.currency = e.target.value;
   localStorage.setItem('currency', state.currency);
-  renderOffers();
+  renderPayments();
 });
-
-elements.backgroundSelect.addEventListener('change', (e) => {
-  state.background = e.target.value;
-  localStorage.setItem('background', state.background);
-  applyBackground();
-});
-
-function formatPrice(amountSar) {
-  const rate = rates[state.currency] || 1;
-  const converted = amountSar * rate;
-  return new Intl.NumberFormat(state.lang === 'ar' ? 'ar-SA' : 'en-US', {
-    style: 'currency',
-    currency: state.currency,
-    maximumFractionDigits: 0,
-  }).format(converted);
-}
 
 function applyTheme() {
   document.documentElement.setAttribute('data-theme', state.theme);
   const labels = content[state.lang].themeLabel;
-  elements.themeLabel.textContent = state.theme === 'dark' ? labels.dark : labels.light;
-}
-
-function applyBackground() {
-  document.body.setAttribute('data-bg', state.background);
+  const isDark = state.theme === 'dark';
+  elements.themeLabel.textContent = isDark ? labels.dark : labels.light;
+  elements.themeIcon.textContent = isDark ? '🌙' : '☀️';
 }
 
 function applyLanguage() {
   const t = content[state.lang];
   document.documentElement.lang = t.lang;
   document.documentElement.dir = t.dir;
-  elements.langToggle.textContent = t.langLabel;
+  elements.langToggle.value = t.lang;
   elements.brandName.textContent = t.brand.name;
   elements.brandSub.textContent = t.brand.sub;
   elements.storeBtn.textContent = t.hero.actions.store;
-  elements.backgroundSelect.innerHTML = Object.entries(t.background.options)
-    .map(([value, label]) => `<option value="${value}">${label}</option>`)
-    .join('');
-  elements.backgroundSelect.value = state.background;
   applyTheme();
   renderNav();
   renderHero();
   renderServices();
-  renderOffers();
   renderPayments();
   renderReviews();
   renderContact();
@@ -654,26 +535,6 @@ function renderServices() {
     )
     .join('');
   elements.servicesAlert.textContent = t.alert;
-}
-
-function renderOffers() {
-  const t = content[state.lang].offers;
-  elements.offersHeader.innerHTML = `
-    <p class="eyebrow">${t.eyebrow}</p>
-    <h2>${t.title}</h2>
-    <p class="section__lead">${t.lead}</p>
-  `;
-  elements.offersGrid.innerHTML = t.cards
-    .map(
-      (card) => `
-        <article class="card">
-          <h3>${card.title}</h3>
-          <div class="price">${formatPrice(card.price)}</div>
-          <div class="note">${card.note}</div>
-        </article>
-      `
-    )
-    .join('');
 }
 
 function renderPayments() {
@@ -801,4 +662,3 @@ function attachSmoothScroll() {
 }
 
 applyLanguage();
-applyBackground();

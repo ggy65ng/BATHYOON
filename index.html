@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="cursor"></div>
   <div class="bg-layer">
+    <div class="bg-gradient"></div>
     <div class="bg-glow"></div>
     <div class="bg-dots"></div>
     <div class="bg-grid"></div>
@@ -26,18 +26,11 @@
     </div>
     <nav class="nav" id="nav-links"></nav>
     <div class="topbar__actions">
-      <button id="lang-toggle" class="chip" aria-label="Toggle language">AR</button>
-      <button id="theme-toggle" class="chip" aria-label="Toggle theme">
-        <span class="icon">🌙</span>
-        <span id="theme-label">Dark</span>
-      </button>
-      <label class="chip select-chip" for="background-select">
-        <span class="icon">✨</span>
-        <select id="background-select" aria-label="اختر خلفية التوهج أو الشبكة أو النقاط">
-          <option value="glow">Glow</option>
-          <option value="dots">Dots</option>
-          <option value="grid">Grid</option>
-          <option value="clean">Clean</option>
+      <label class="chip select-chip" for="lang-toggle">
+        <span class="icon">🌐</span>
+        <select id="lang-toggle" aria-label="Toggle language">
+          <option value="ar">🇸🇦 AR</option>
+          <option value="en">🇺🇸 EN</option>
         </select>
       </label>
       <label class="chip select-chip" for="currency-select">
@@ -48,6 +41,10 @@
           <option value="EUR">EUR</option>
         </select>
       </label>
+      <button id="theme-toggle" class="chip" aria-label="Toggle theme">
+        <span class="icon" id="theme-icon">🌙</span>
+        <span id="theme-label">Dark</span>
+      </button>
       <a class="pill" href="https://bathyoon.com/" target="_blank" rel="noreferrer" id="store-btn">الدخول للمتجر</a>
     </div>
   </header>
@@ -61,11 +58,6 @@
       <div class="section__header" id="services-header"></div>
       <div class="grid cards" id="services-grid"></div>
       <div class="alert" role="note" id="services-alert"></div>
-    </section>
-
-    <section id="offers" class="section section--muted" data-animate>
-      <div class="section__header" id="offers-header"></div>
-      <div class="grid cards" id="offers-grid"></div>
     </section>
 
     <section id="payments" class="section" data-animate>
