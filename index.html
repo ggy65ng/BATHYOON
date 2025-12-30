@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>باثيون ستور | Bathyoon Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="cursor"></div>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">B</div>
+      <div class="brand__text">
+        <strong data-i18n="brandName">باثيون ستور</strong>
+        <small data-i18n="brandSubtitle">Bathyoon Store</small>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#home" data-i18n="nav.home">الرئيسية</a>
+      <a href="#about" data-i18n="nav.about">من نحن</a>
+      <a href="#services" data-i18n="nav.services">الخدمات</a>
+      <a href="#payments" data-i18n="nav.payments">طرق الدفع</a>
+      <a href="#faq" data-i18n="nav.faq">الأسئلة</a>
+      <a href="#contact" data-i18n="nav.contact">تواصل</a>
+    </nav>
+    <div class="controls">
+      <button id="langToggle" class="chip" aria-label="تغيير اللغة">AR</button>
+      <button id="themeToggle" class="chip" aria-label="تغيير المظهر">🌙</button>
+      <select id="currencySelect" class="chip">
+        <option value="SAR">SAR</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
+      <a class="pill" href="https://bathyoon.com/" target="_blank" rel="noreferrer" data-i18n="cta.store">زيارة المتجر</a>
+      <a class="pill ghost" href="https://discord.gg/byh" target="_blank" rel="noreferrer" data-i18n="cta.discord">انضم للدسكورد</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="section hero" data-animate>
+      <div class="hero__content">
+        <p class="eyebrow" data-i18n="hero.eyebrow">منصة رقمية سعودية</p>
+        <h1 data-i18n="hero.title">باثيون ستور – كل ما تحتاجه لعالم الألعاب والاشتراكات الرقمية في مكان واحد</h1>
+        <p class="lead" data-i18n="hero.lead">نوفر حسابات سميرف وخدمات ألعاب واشتراكات رقمية بأسعار منافسة وتسليم فوري ودعم متواصل.</p>
+        <div class="hero__actions">
+          <a class="btn primary" href="https://bathyoon.com/" target="_blank" rel="noreferrer" data-i18n="cta.store">زيارة المتجر</a>
+          <a class="btn ghost" href="https://discord.gg/byh" target="_blank" rel="noreferrer" data-i18n="cta.discord">انضم للدسكورد</a>
+        </div>
+        <ul class="hero__badges" id="heroBadges"></ul>
+        <div class="note" data-i18n="hero.note">الموقع تعريفي حالياً، الطلب عبر المتجر أو الدسكورد.</div>
+      </div>
+      <div class="hero__panel">
+        <div class="panel__card">
+          <p class="eyebrow" data-i18n="cta.quick">روابط سريعة</p>
+          <div class="panel__buttons">
+            <a href="https://bathyoon.com/" class="pill" target="_blank" rel="noreferrer" data-i18n="cta.store">زيارة المتجر</a>
+            <a href="https://discord.gg/byh" class="pill ghost" target="_blank" rel="noreferrer" data-i18n="cta.discord">انضم للدسكورد</a>
+          </div>
+          <div class="ticker" id="reviews">
+            <div class="ticker__track" id="reviewsTrack"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section" data-animate>
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="about.eyebrow">من نحن</p>
+        <h2 data-i18n="about.title">باثيون ستور | Bathyoon Store</h2>
+        <p class="section__lead" data-i18n="about.lead">منصة سعودية متخصصة في تقديم خدمات ألعاب واشتراكات رقمية بأسلوب احترافي وموثوق.</p>
+      </div>
+      <div class="grid cards" id="aboutCards"></div>
+    </section>
+
+    <section id="services" class="section section--muted" data-animate>
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="services.eyebrow">الخدمات والمنتجات</p>
+        <h2 data-i18n="services.title">عروض رقمية بدون شراء مباشر</h2>
+        <p class="section__lead" data-i18n="services.lead">التفاصيل تعريفيـة فقط، والطلب يتم عبر المتجر أو الدسكورد.</p>
+      </div>
+      <div class="grid cards" id="serviceCards"></div>
+      <div class="alert" role="note" data-i18n="services.note">⚠️ لا توجد سلة شراء داخل الموقع حالياً.</div>
+    </section>
+
+    <section id="payments" class="section" data-animate>
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="payments.eyebrow">طرق الدفع والعملات</p>
+        <h2 data-i18n="payments.title">خيارات دفع موثوقة</h2>
+        <p class="section__lead" data-i18n="payments.lead">ندعم الريال السعودي، الدولار الأمريكي، واليورو مع وسائل دفع آمنة.</p>
+      </div>
+      <div class="grid payment-grid" id="paymentCards"></div>
+    </section>
+
+    <section id="why" class="section section--muted" data-animate>
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="why.eyebrow">ليش تختارنا</p>
+        <h2 data-i18n="why.title">تجربة موثوقة وسريعة</h2>
+      </div>
+      <div class="grid badges" id="whyBadges"></div>
+    </section>
+
+    <section id="faq" class="section" data-animate>
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="faq.eyebrow">الأسئلة الشائعة</p>
+        <h2 data-i18n="faq.title">إجابات سريعة</h2>
+      </div>
+      <div class="faq" id="faqItems"></div>
+    </section>
+
+    <section id="warranty" class="section section--muted" data-animate>
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="warranty.eyebrow">سياسة الضمان</p>
+        <h2 data-i18n="warranty.title">دعم وحماية للمنتجات الرقمية</h2>
+        <p class="section__lead" data-i18n="warranty.lead">الضمان يهدف للحماية وليس الاسترجاع، والاستبدال يتم فقط عند وجود مشكلة تقنية حقيقية بالمنتج.</p>
+      </div>
+      <div class="grid cards" id="warrantyCards"></div>
+    </section>
+
+    <section id="contact" class="section" data-animate>
+      <div class="section__header">
+        <p class="eyebrow" data-i18n="contact.eyebrow">تواصل</p>
+        <h2 data-i18n="contact.title">اطلب أو استفسر بسهولة</h2>
+        <p class="section__lead" data-i18n="contact.lead">للطلب أو الدعم الفني يرجى استخدام الروابط الرسمية.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn primary" href="https://bathyoon.com/" target="_blank" rel="noreferrer" data-i18n="cta.store">المتجر الرسمي</a>
+        <a class="btn ghost" href="https://discord.gg/byh" target="_blank" rel="noreferrer" data-i18n="cta.discord">سيرفر الدسكورد</a>
+      </div>
+      <form class="contact-form" novalidate>
+        <div class="form__row">
+          <label for="name" data-i18n="contact.form.name">الاسم</label>
+          <input id="name" type="text" placeholder="أدخل اسمك" data-i18n-placeholder="contact.form.namePlaceholder" />
+        </div>
+        <div class="form__row">
+          <label for="message" data-i18n="contact.form.message">رسالتك</label>
+          <textarea id="message" rows="3" placeholder="كيف نقدر نخدمك؟" data-i18n-placeholder="contact.form.messagePlaceholder"></textarea>
+        </div>
+        <button type="button" class="btn primary" data-i18n="contact.form.cta">إرسال استفسار (تجريبي)</button>
+        <p class="muted" data-i18n="contact.form.note">النموذج تجريبي؛ يرجى استخدام المتجر أو الدسكورد للطلبات.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <strong data-i18n="brandName">باثيون ستور</strong>
+        <p data-i18n="footer.copy">© باثيون ستور 2025 — جميع الحقوق محفوظة</p>
+        <p data-i18n="footer.made">صنع في المملكة العربية السعودية 🇸🇦</p>
+      </div>
+      <div class="footer__links">
+        <a href="#home" data-i18n="nav.home">الرئيسية</a>
+        <a href="#services" data-i18n="nav.services">الخدمات</a>
+        <a href="#payments" data-i18n="nav.payments">طرق الدفع</a>
+        <a href="#contact" data-i18n="nav.contact">التواصل</a>
+      </div>
+    </div>
+    <div class="footer__cta">
+      <a href="https://bathyoon.com/" target="_blank" rel="noreferrer" data-i18n="cta.store">المتجر الإلكتروني</a>
+      <a href="https://discord.gg/byh" target="_blank" rel="noreferrer" data-i18n="cta.discord">الدسكورد</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
